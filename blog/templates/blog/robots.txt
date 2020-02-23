@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /*.pdf
+Disallow: /*.ppt
+Disallow: /*.doc
+Disallow: /*.xls
+Disallow: /*.txt
+Disallow: /admin
+
+Host: https://warkentin.ru/blog/
+Sitemap: https://warkentin.ru/blog/sitemap.xml
