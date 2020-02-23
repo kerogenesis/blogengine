@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+isort = "*"
+
+[packages]
+django = "*"
+django-crispy-forms = "*"
+markdown = "*"
+django-markdownx = "*"
+djangorestframework = "*"
+beautifulsoup4 = "*"
+gunicorn = "*"
+whitenoise = "*"
+dj-database-url = "*"
+python-decouple = "*"
+psycopg2-binary = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true

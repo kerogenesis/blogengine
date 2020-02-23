@@ -1,0 +1,12 @@
+{% load crispy_forms_tags %}
+
+<div class="card-body reply-card">
+    <h3>Ваш ответ</h3>
+    <form action="{% url 'comment_create_url' post.slug %}" class="comments-form" method="post">
+        {{ comment_form | crispy }}
+        {% csrf_token %}
+        <span class="markdown-on">Работает Markdown</span>
+        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+        <button type="submit" class="btn btn-primary btn-lg">Ответить</button>
+    </form>
+</div>

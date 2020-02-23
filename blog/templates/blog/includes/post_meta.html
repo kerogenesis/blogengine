@@ -1,0 +1,20 @@
+<meta name="title" content="{{ post.title }}">
+<meta name="description" content="{{ post.body|truncatewords:50 }}">
+<meta name="keywords" content="{% for tag in post.tags.all %}{{ tag.title }}, {% endfor %}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Define yourself outside vim">
+<meta property="og:title" content="{{ post.title }}">
+<meta property="og:description" content="{{ post.body|truncatewords:50 }}">
+<meta property="og:url" content="https://warkentin.ru/blog/{{ post.slug }}">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="{{ post.og_image }}">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ post.title }}">
+<meta name="twitter:description" content="{{ post.body|truncatewords:50 }}">
+<meta name="twitter:image:src" content="{{ post.og_image }}">
+<meta name="twitter:url" content="https://warkentin.ru/blog/{{ post.slug }}">
+<meta name="twitter:domain" content="warkentin.ru">

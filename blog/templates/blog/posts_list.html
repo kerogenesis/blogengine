@@ -1,0 +1,15 @@
+{% extends 'blog/base_blog.html' %}
+{% load pluralize %}
+
+{% block title %}
+    Заметки блога
+{% endblock %}
+
+{% block content %}
+    <h1 class="list-title">{{ posts.count }} {{ posts.count|rupluralize:"заметка,заметки,заметок" }}</h1>
+    <div class="list-body">
+        {% for post in posts %}
+            <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+        {% endfor %}
+    </div>
+{% endblock %}

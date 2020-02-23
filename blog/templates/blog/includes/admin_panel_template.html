@@ -1,0 +1,21 @@
+<div class="admin-panel align-items-center">
+    {% block admin-panel %}
+        {% if not admin_object %}
+            <div class="btn-group dropleft">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Создать
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'post_create_url' %}">Пост</a>
+                    <a class="dropdown-item" href="{% url 'tag_create_url' %}">Тег</a>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if admin_object %}
+            <a href="{{ admin_object.get_update_url }}" class="btn btn-light">Изменить</a>
+            <a href="{{ admin_object.get_delete_url }}" class="btn btn-danger">Удалить</a>
+        {% endif %}
+    {% endblock %}
+</div>

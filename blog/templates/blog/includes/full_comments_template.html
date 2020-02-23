@@ -1,0 +1,33 @@
+{% load pluralize %}
+
+<div class="discussion-block">
+    <style>.markdownx-preview {display: none !important}</style>
+    <a name="comments"></a>
+    <h1>
+        {% if comments %}
+            {{ comments.count }} {{ comments.count|rupluralize:"комментарий,комментария,комментариев" }}
+        {% else %}
+            {% if post.allow_comments %}Напишите первый комментарий{% endif %}
+        {% endif %}
+    </h1>
+
+    {% for comment in comments %}
+        {% include 'blog/includes/comment_template.html' %}
+        <div class="reply-block">
+        {% if comment.children %}
+            <div class="reply-items">
+                {% for child_comment in comment.children %}
+                    {% include 'blog/includes/reply_template.html' %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if post.allow_comments %}
+            {% include 'blog/includes/reply_form_template.html' %}
+        {% endif %}
+        </div>
+    {% endfor %}
+
+    {% if post.allow_comments %}
+        {% include 'blog/includes/comment_form_template.html' %}
+    {% endif %}
+</div>

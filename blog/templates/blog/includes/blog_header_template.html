@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 col-lg-8 col-md-11 col-sm-12 col-12">
+            {% if request.get_full_path == "/blog/" %}
+                <div class="avatar"></div>
+            {% else %}
+                <a href="{% url 'index_page_url' %}">
+                    <div class="avatar"></div>
+                </a>
+            {% endif %}
+            <div class="info">
+                <div class="blog-title">
+                    {% if request.get_full_path == "/blog/" %}
+                        Define yourself outside vim
+                    {% else %}
+                        <a href="{% url 'index_page_url' %}" class="blog-title-link">Define yourself outside vim</a>
+                    {% endif %}
+                </div>
+                <div class="blog-description">Делюсь мыслями и ссылками, рассказываю про прочитанные книги
+                    и&nbsp;инструменты для автоматизации рутинных задач.
+                </div>
+                <nav>
+                    <div class="blog-links">
+                        <a href="https://warkentin.ru/blog/tags/projects/">Проекты</a><span
+                            class="links-dots">·</span>
+                        <a href="https://warkentin.ru/blog/tags/python/">Python</a><span
+                            class="links-dots">·</span>
+                        <a href="https://warkentin.ru/blog/tags/design/">Дизайн</a><span
+                            class="links-dots">·</span>
+                        <a href="https://warkentin.ru/blog/tags/books/">Книги</a><span class="links-dots">·</span>
+                        <a href="https://warkentin.ru/blog/tags/useful/">Полезное</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-1 col-lg-3 col-md-9 col-sm-12 col-12">
+            <div class="search">
+                <button class="action-search-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                            </path>
+                        </svg>
+                </button>
+                <form class="input-field" action="{% url 'index_page_url' %}">
+                    <button class="btn-search" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                            <path
+                                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                            </path>
+                        </svg>
+                    </button>
+                    <input type="search" placeholder="" aria-label="" name="search" class="search-action">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

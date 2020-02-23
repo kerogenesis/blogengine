@@ -1,0 +1,40 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}Define yourself outside vim{% endblock %}
+
+{% block content %}
+    {% for post in page_object.object_list %}
+        {% include 'blog/includes/index_post_template.html' %}
+    {% endfor %}
+
+    {% if is_paginated %}
+        <div class="pagination">
+            {% if next_page_url %}
+                <a href="{{ next_page_url }}" class="pagination-next">
+                Ранее
+            {% else %}
+                <a href="{{ prev_page_url }}" class="pagination-next">
+                Позднее
+            {% endif %}
+            </a>
+            <div class="pagination-shortcut">
+                {% if next_page_url %}
+                    Ctrl + ↓
+                {% else %}
+                    Ctrl + ↑
+                {% endif %}
+            </div>
+
+            <script>
+                document.addEventListener('keydown', function (event) {
+                    if (event.keyCode === 40 && (event.ctrlKey || event.metaKey)) {
+                        {% if next_page_url %}window.location.assign("{{ next_page_url }}");{% endif %}
+                    } else if (event.keyCode === 38 && (event.ctrlKey || event.metaKey)) {
+                        {% if prev_page_url %}window.location.assign("{{ prev_page_url }}");{% endif %}
+                    }
+                });
+            </script>
+
+        </div>
+    {% endif %}
+{% endblock %}

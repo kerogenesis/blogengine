@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {% include 'blog/includes/main_meta.html' %}
+
+    {% block page_meta %}
+        {% include 'blog/includes/index_page_meta.html' %}
+    {% endblock %}
+
+    {% include 'blog/includes/styles.html' %}
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+<header>
+    {% include 'blog/includes/blog_header_template.html' %}
+</header>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-12">
+                {% block content %}
+                    Контент
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</main>
+
+{% if request.user.is_authenticated and request.user.is_staff %}
+    {% include 'blog/includes/admin_panel_template.html' %}
+{% endif %}
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <p class="footer">© 2020</p>
+                <a href="mailto:hello@warkentin.ru">hello@warkentin.ru</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% include 'blog/includes/scripts.html' %}
+
+</body>
+</html>
+

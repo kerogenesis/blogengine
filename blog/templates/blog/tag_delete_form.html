@@ -1,0 +1,14 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+   Удаление тега «{{ tag.title|capfirst }}»
+{% endblock %}
+
+{% block content %}
+    <form class="edit-form" action="{{ tag.get_delete_url }}" method="post">
+    {% csrf_token %}
+    <h1 class="mb-3">Удалить тег {{ tag.title|capfirst }}?</h1>
+    <a href="{{ tag.get_absolute_url }}" class="btn btn-primary btn-lg mr-2">Не надо</a>
+    <button type="submit" name="button" class="btn btn-danger btn-lg">Удалить</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'blog/base_blog.html' %}
+{% load pluralize %}
+
+{% block title %}
+    Теги блога
+{% endblock %}
+
+{% block content %}
+    <h1 class="list-title">{{ tags.count }} {{ tags.count|rupluralize:"тег,тега,тегов" }}</h1>
+    <div class="list-body">
+        {% for tag in tags %}
+            <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}

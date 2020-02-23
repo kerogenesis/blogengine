@@ -1,0 +1,17 @@
+<div class="reply-item {% if child_comment.mark %}marked-comment{% endif %}">
+    <div class="discussion-header">
+        <a href="{{ child_comment.get_absolute_url }}" class="comment-avatar" id="comment{{ child_comment.id }}"
+           style="background-image: url('/static/images/avatars/{% if child_comment.name == 'Дмитрий Варкентин' %}warkentin.jpg{% else %}{{ comment.gen_avatar }}{% endif %}');"></a>
+        <span class="author">{{ child_comment.name }}</span>
+        <span class="discussion-meta">
+            {% if child_comment.current_year == child_comment.created_on|date:"Y" %}
+                {{ child_comment.created_on|date:"j E" }} в {{ child_comment.created_on|date:"H:i" }}
+            {% else %}
+                {{ child_comment.created_on|date:"j E Y" }}
+            {% endif %}
+        </span>
+    </div>
+    <div class="discussion-body">
+        {{ child_comment.formatted_markdown|safe }}
+    </div>
+</div>

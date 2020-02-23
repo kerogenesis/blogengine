@@ -1,0 +1,35 @@
+{% load static %}
+{% load pluralize %}
+
+<article class="post">
+
+    <time>
+        {% if post.current_year == post.date_pub|date:"Y" %}
+            {{ post.date_pub|date:"j E"}}
+        {% else %}
+            {{ post.date_pub|date:"j E Y" }}
+        {% endif %}
+    </time>
+
+    <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+
+    {{ post.formatted_markdown|safe }}
+
+    <div class="post-meta">
+    {% if post.allow_comments or post.comments.count != 0 %}
+        <a href="{{ post.get_absolute_url }}#comments" class="comments"><img src="{% static 'images/comments.svg' %}" alt="comments-icon" class="comments-icon">
+            <u>
+                {% if post.comments.count > 0 %}
+                    {{ post.get_comments_without_replies.count }} {{ post.get_comments_without_replies.count|rupluralize:"комментарий,комментария,комментариев" }}
+                {% else %}
+                    Нет комментариев
+                {% endif %}
+            </u>
+        </a>
+    {% endif %}
+        {% for tag in post.tags.all %}
+            <a href="{{ tag.get_absolute_url }}" class="tag">{{ tag.title }}</a>
+        {% endfor %}
+
+    </div>
+</article>
