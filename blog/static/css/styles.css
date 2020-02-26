@@ -365,7 +365,8 @@ img.mac-scr {
 article.post img.comments-icon {
     width: 22px;
     height: 22px;
-    margin: -3px 2px 0 0 
+    margin-top: -3px;
+    margin-bottom: 0;
 }
 
 a.comments {
