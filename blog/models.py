@@ -3,7 +3,8 @@ import math
 import re
 from random import randint
 
-import markdown
+import bleach
+from bleach_whitelist import markdown_attrs, markdown_tags
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.shortcuts import reverse
@@ -44,8 +45,7 @@ class Post(models.Model):
 
     def get_reading_time(self):
         # convert markdown text to html code
-        md = markdown.Markdown()
-        article_html = md.convert(self.body)
+        article_html = markdownify(self.body)
 
         # count words
         world_string = strip_tags(article_html)
@@ -119,7 +119,7 @@ class Comment(models.Model):
         return str(datetime.datetime.now().year)
 
     def formatted_markdown(self):
-        return markdownify(self.body)
+        return bleach.clean(markdownify(self.body), markdown_tags, markdown_attrs)
 
     @staticmethod
     def gen_avatar():
