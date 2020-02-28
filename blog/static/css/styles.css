@@ -495,7 +495,9 @@ span.discussion-meta {
     font-size: 126%
 }
 
-.discussion-body dl, ol, ul {
+.discussion-body dl,
+.discussion-body ol,
+.discussion-body ul {
     font-size: 126%
 }
 
