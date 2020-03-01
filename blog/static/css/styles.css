@@ -651,6 +651,20 @@ form.comments-form-new {
     padding: 0 0 2rem 3rem
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    background-image: linear-gradient(to right, #457fca 0%, #5691c8 51%, #457fca 100%) !important
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    background-position: right center !important
+}
+
 span.markdown-on {
     font-size: 14px;
     color: #9c9c9c;
