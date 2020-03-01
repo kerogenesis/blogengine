@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.postgres.search import SearchVector
 from django.core.paginator import Paginator
-from django.db.models import Q
 from django.views.generic import View
 
 from .forms import CommentForm, PostForm, TagForm
@@ -10,15 +10,28 @@ from .mixins import *
 class IndexPage(View):
     template = 'blog/index.html'
 
-    def search_monitor(self, request):
+    def get(self, request):
+        posts = self.search_monitor(request)
+
+        if not posts:
+            return render(request, 'blog/post_not_found.html')
+
+        pagintator = self.paginator(request, posts)
+        return render(request, self.template, context=pagintator)
+
+    @staticmethod
+    def search_monitor(request):
         search_query = request.GET.get('search', '')
         if search_query:
-            posts = Post.objects.filter(Q(title__icontains=search_query) | Q(body__icontains=search_query))
+            posts = Post.objects.annotate(
+                search=SearchVector('title', 'body'),
+            ).filter(search=search_query)
         else:
             posts = Post.objects.all()
         return posts
 
-    def paginator(self, request, posts):
+    @staticmethod
+    def paginator(request, posts):
         posts_on_the_page = 6
         paginator = Paginator(posts, posts_on_the_page)
         page_number = request.GET.get('page', 1)
@@ -41,15 +54,6 @@ class IndexPage(View):
             'prev_page_url': prev_page_url
         }
         return pagintator_context
-
-    def get(self, request):
-        posts = self.search_monitor(request)
-
-        if not posts:
-            return render(request, 'blog/post_not_found.html')
-
-        pagintator = self.paginator(request, posts)
-        return render(request, self.template, context=pagintator)
 
 
 class PostDetail(View):
