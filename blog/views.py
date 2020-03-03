@@ -114,13 +114,44 @@ class CommentCreate(View):
                     new_comment.post = current_post
                     new_comment.save()
                     return redirect(
-                        reverse('post_detail_url', kwargs={'slug': slug}) + '#comment{}'.format(parent_id)
+                        reverse('post_detail_url',
+                                kwargs={'slug': slug}) + '#comment{}'.format(parent_id)
                     )
 
             new_comment.post = current_post
             new_comment.save()
             return redirect(new_comment)
         return redirect('/')
+
+
+class CommentMark(LoginRequiredMixin, View):
+    def get(self, request, slug, id):
+        comment_for_mark = Comment.objects.get(id=id)
+        if not comment_for_mark.mark:
+            comment_for_mark.mark = True
+        else:
+            comment_for_mark.mark = False
+        comment_for_mark.save()
+        if comment_for_mark.parent_id is not None:
+            return redirect(
+                reverse('post_detail_url', kwargs={'slug': slug}) + '#comment{}'.format(comment_for_mark.parent_id)
+            )
+        else:
+            return redirect(comment_for_mark)
+
+
+class CommentDelete(LoginRequiredMixin, View):
+    model = Comment
+
+    def get(self, request, slug, id):
+        comment_for_delete = self.model.objects.get(id=id)
+        context = {self.model.__name__.lower(): comment_for_delete}
+        return render(request, 'blog/comment_delete_form.html', context=context)
+
+    def post(self, request, slug, id):
+        comment_for_delete = self.model.objects.get(id=id)
+        comment_for_delete.delete()
+        return redirect(reverse('post_detail_url', kwargs={'slug': slug}) + '#comments')
 
 
 class TagDetail(ObjectDetailMixin, View):

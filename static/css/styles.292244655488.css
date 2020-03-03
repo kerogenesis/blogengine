@@ -631,6 +631,13 @@ p {
     max-width: 100%
 }
 
+img.mod-comment-icon {
+    float: right;
+    width: 22px;
+    height: 22px;
+    margin: 0 0 0 10px
+}
+
 form.comments-form {
     margin-top: 0.6em
 }
@@ -660,6 +667,8 @@ form.comments-form-new {
 
 .btn-primary:hover {
     color: #fff;
+    border-radius: .3rem !important;
+    background-image: linear-gradient(to right,#4679bb 0,#5083b3 51%,#3e71b3 100%)!important;
     background-color: transparent !important;
     border-color: transparent !important;
     background-position: right center !important

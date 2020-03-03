@@ -129,6 +129,9 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return reverse('post_detail_url', kwargs={'slug': self.post.slug}) + "#comment{}".format(self.id)
 
+    def get_delete_url(self):
+        return reverse('comment_delete_url', kwargs={'slug': self.post.slug, 'id': self.id})
+
     def get_api_url(self):
         return 'https://warkentin.ru' + reverse('post_detail_api_url', kwargs={'slug': self.post.slug})
 
