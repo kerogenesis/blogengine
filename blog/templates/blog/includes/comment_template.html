@@ -3,12 +3,18 @@
 
 <div class="discussion-item {% if comment.mark %}marked-comment{% endif %}">
     <div class="discussion-header">
+
         {% if request.user.is_authenticated and request.user.is_staff %}
-            <a href="{% url 'comment_delete_url' post.slug comment.id %}"><img src="{% static 'images/delete.svg' %}" alt="delete-comment-icon" class="mod-comment-icon"></a>
-            <a href="{% url 'comment_mark_url' post.slug comment.id %}"><img src="{% static 'images/mark.svg' %}" alt="mark-comment-icon" class="mod-comment-icon"></a>
+            <a href="{% url 'comment_delete_url' post.slug comment.id %}">
+                <img src="{% static 'images/delete.svg' %}" alt="delete-comment-icon" class="mod-comment-icon">
+            </a>
+            <a href="{% url 'comment_mark_url' post.slug comment.id %}">
+                <img src="{% if comment.mark %}{% static 'images/no-mark.svg' %}{% else %}{% static 'images/mark.svg' %}{% endif %}" alt="mark-comment-icon" class="mod-comment-icon">
+            </a>
         {% endif %}
-        <a href="{{ comment.get_absolute_url }}" class="comment-avatar" id="comment{{ comment.id }}"
-           style="background-image: url('/static/images/avatars/{% if comment.name == 'Дмитрий Варкентин' %}warkentin.jpg{% else %}{{ comment.gen_avatar }}{% endif %}');"></a>
+
+        <a href="{{ comment.get_absolute_url }}" class="comment-avatar" id="comment{{ comment.id }}" style="background-image: url('/static/images/avatars/{% if comment.name == 'Дмитрий Варкентин' %}warkentin.jpg{% else %}{{ comment.gen_avatar }}{% endif %}');">
+        </a>
         <span class="author">{{ comment.name }}</span>
         <span class="discussion-meta">
             {% if comment.current_year == comment.created_on|date:"Y" %}

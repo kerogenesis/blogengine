@@ -2,10 +2,16 @@
 
 <div class="reply-item {% if child_comment.mark %}marked-comment{% endif %}">
     <div class="discussion-header">
+
         {% if request.user.is_authenticated and request.user.is_staff %}
-            <a href="{% url 'comment_delete_url' post.slug child_comment.id %}"><img src="{% static 'images/delete.svg' %}" alt="delete-comment-icon" class="mod-comment-icon"></a>
-            <a href="{% url 'comment_mark_url' post.slug child_comment.id %}"><img src="{% static 'images/mark.svg' %}" alt="mark-comment-icon" class="mod-comment-icon"></a>
+            <a href="{% url 'comment_delete_url' post.slug child_comment.id %}">
+                <img src="{% static 'images/delete.svg' %}" alt="delete-comment-icon" class="mod-comment-icon">
+            </a>
+            <a href="{% url 'comment_mark_url' post.slug child_comment.id %}">
+                <img src="{% if child_comment.mark %}{% static 'images/no-mark.svg' %}{% else %}{% static 'images/mark.svg' %}{% endif %}" alt="mark-comment-icon" class="mod-comment-icon">
+            </a>
         {% endif %}
+
         <a href="{{ child_comment.get_absolute_url }}" class="comment-avatar" id="comment{{ child_comment.id }}"
            style="background-image: url('/static/images/avatars/{% if child_comment.name == 'Дмитрий Варкентин' %}warkentin.jpg{% else %}{{ comment.gen_avatar }}{% endif %}');"></a>
         <span class="author">{{ child_comment.name }}</span>
