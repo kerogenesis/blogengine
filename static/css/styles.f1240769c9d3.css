@@ -1,5 +1,5 @@
 :root {
-    --avatar: url("../images/blog_logo.jpg");
+    --avatar: url("../images/blog_logo.eb8ba35cb6a7.jpg");
     --backgroundColor: #fff;
     --headingsColor: black;
     --linkColor: #0060a0;
@@ -8,35 +8,35 @@
 
 @font-face {
     font-family: i8serif;
-    src: local("Gregor"), url("../fonts/GregorIT.woff") format("woff"), url("../fonts/GregorIT.ttf") format("truetype"), url("../fonts/GregorIT.svg") format("svg");
+    src: local("Gregor"), url("../fonts/GregorIT.fc1d5571aac0.woff") format("woff"), url("../fonts/GregorIT.717b9317749f.ttf") format("truetype"), url("../fonts/GregorIT.cc007a2cafa9.svg") format("svg");
     font-weight: 400;
     font-style: italic
 }
 
 @font-face {
     font-family: i8serif;
-    src: local("Gregor"), url("../fonts/Gregor.woff") format("woff"), url("../fonts/Gregor.ttf") format("truetype"), url("../fonts/Gregor.svg") format("svg");
+    src: local("Gregor"), url("../fonts/Gregor.b13e2c53ec17.woff") format("woff"), url("../fonts/Gregor.26c9f2bdf881.ttf") format("truetype"), url("../fonts/Gregor.ac668b976a76.svg") format("svg");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: i8sans;
-    src: url("../fonts/P22UndergroundCYProBook.woff") format("woff"), url("../fonts/P22UndergroundCYProBook.svg") format("svg");
+    src: url("../fonts/P22UndergroundCYProBook.e2dcfa2445c5.woff") format("woff"), url("../fonts/P22UndergroundCYProBook.333617be2948.svg") format("svg");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: i8sans;
-    src: url("../fonts/P22UndergroundCYHeavy.woff") format("woff"), url("../fonts/P22UndergroundCYHeavy.ttf") format("truetype");
+    src: url("../fonts/P22UndergroundCYHeavy.922c5d886edf.woff") format("woff"), url("../fonts/P22UndergroundCYHeavy.7808c889969c.ttf") format("truetype");
     font-weight: 700;
     font-style: normal
 }
 
 @font-face {
     font-family: i8mono;
-    src: url("../fonts/FiraCode-Regular.woff") format("woff");
+    src: url("../fonts/FiraCode-Regular.4d1f86fcb0a6.woff") format("woff");
     font-weight: 400;
     font-style: normal
 }

@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from snowpenguin.django.recaptcha3.fields import ReCaptchaField
+
 from .models import Comment, Post, Tag
 
 
@@ -45,6 +47,8 @@ class TagForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    captcha = ReCaptchaField()
+
     class Meta:
         model = Comment
-        fields = ('name', 'body')
+        fields = ('name', 'body', 'captcha')

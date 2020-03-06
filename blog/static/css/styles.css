@@ -720,6 +720,10 @@ ol.square-list {
     max-width: 840px
 }
 
+.grecaptcha-badge {
+    display: none !important;
+}
+
 @media (max-width: 1136px) {
     article.post {
         padding: 3rem 0 0 0

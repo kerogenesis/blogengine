@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'markdownx',
     'crispy_forms',
     'rest_framework',
+    'snowpenguin.django.recaptcha3',
 ]
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
@@ -135,3 +136,9 @@ MARKDOWNX_IMAGE_MAX_SIZE = {
     'size': (1200, 0),
     'quality': 90
 }
+
+# reCAPTCHA settings
+RECAPTCHA_PUBLIC_KEY = '6LfMXt8UAAAAAOIxlsqYfbIaJUcK366Hl21LBdai'
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
+RECAPTCHA_DEFAULT_ACTION = 'generic'
+RECAPTCHA_SCORE_THRESHOLD = 0.5
