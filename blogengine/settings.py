@@ -7,12 +7,9 @@ from decouple import config, UndefinedValueError
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# Production staff
 SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
 ALLOWED_HOSTS = ['fierce-sands-08098.herokuapp.com', 'warkentin.ru']
 
 # Application definition
@@ -31,27 +28,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'snowpenguin.django.recaptcha3',
 ]
-
-MARKDOWNX_MARKDOWN_EXTENSIONS = [
-    'markdown.extensions.extra'
-]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': [
-        'blog.api.utils.PrettyJsonRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-    ],
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '200/day',
-        'user': '3000/day'
-    }
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,6 +104,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -138,16 +115,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Markdownx image path
-MARKDOWNX_MEDIA_PATH = os.path.join(BASE_DIR, 'media/' + datetime.now().strftime('markdownx/%Y/%m/%d'))
-MARKDOWNX_IMAGE_MAX_SIZE = {
-    'size': (1200, 0),
-    'quality': 90
-}
-
 
 # SECURITY
-# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/3.0/ref/middleware/#module-django.middleware.security
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
@@ -157,8 +127,41 @@ SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
-# reCAPTCHA settings
+# reCAPTCHA
+# https://github.com/kbytesys/django-recaptcha3
 RECAPTCHA_PUBLIC_KEY = '6LfMXt8UAAAAAOIxlsqYfbIaJUcK366Hl21LBdai'
 RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 RECAPTCHA_DEFAULT_ACTION = 'generic'
 RECAPTCHA_SCORE_THRESHOLD = 0.5
+
+
+# Markdownx
+# https://github.com/neutronX/django-markdownx
+MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.extra']
+MARKDOWNX_MEDIA_PATH = os.path.join(BASE_DIR, 'media/' + datetime.now().strftime('markdownx/%Y/%m/%d'))
+MARKDOWNX_IMAGE_MAX_SIZE = {
+    'size': (1200, 0),
+    'quality': 90
+}
+
+
+# DRF
+# https://www.django-rest-framework.org/api-guide/settings/
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'blog.api.utils.PrettyJsonRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '200/day',
+        'user': '3000/day'
+    }
+}
+
+
+# Other apps
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
