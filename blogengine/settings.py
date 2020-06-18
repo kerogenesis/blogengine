@@ -152,7 +152,6 @@ MARKDOWNX_IMAGE_MAX_SIZE = {
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'blog.api.utils.PrettyJsonRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
