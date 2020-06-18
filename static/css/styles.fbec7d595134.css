@@ -1,5 +1,5 @@
 :root {
-    --avatar: url("../images/blog_logo.eb8ba35cb6a7.jpg");
+    --avatar: url("../images/blog_logo.e89b38927265.jpg");
     --backgroundColor: #fff;
     --headingsColor: black;
     --linkColor: #0060a0;
@@ -8,21 +8,21 @@
 
 @font-face {
     font-family: i8serif;
-    src: local("Gregor"), url("../fonts/GregorIT.fc1d5571aac0.woff") format("woff"), url("../fonts/GregorIT.717b9317749f.ttf") format("truetype"), url("../fonts/GregorIT.cc007a2cafa9.svg") format("svg");
+    src: local("Gregor"), url("../fonts/GregorIT.fc1d5571aac0.woff") format("woff"), url("../fonts/GregorIT.717b9317749f.ttf") format("truetype"), url("../fonts/GregorIT.8c75d03e5756.svg") format("svg");
     font-weight: 400;
     font-style: italic
 }
 
 @font-face {
     font-family: i8serif;
-    src: local("Gregor"), url("../fonts/Gregor.b13e2c53ec17.woff") format("woff"), url("../fonts/Gregor.26c9f2bdf881.ttf") format("truetype"), url("../fonts/Gregor.ac668b976a76.svg") format("svg");
+    src: local("Gregor"), url("../fonts/Gregor.b13e2c53ec17.woff") format("woff"), url("../fonts/Gregor.26c9f2bdf881.ttf") format("truetype"), url("../fonts/Gregor.0515ec7eed18.svg") format("svg");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: i8sans;
-    src: url("../fonts/P22UndergroundCYProBook.e2dcfa2445c5.woff") format("woff"), url("../fonts/P22UndergroundCYProBook.333617be2948.svg") format("svg");
+    src: url("../fonts/P22UndergroundCYProBook.e2dcfa2445c5.woff") format("woff"), url("../fonts/P22UndergroundCYProBook.5e238e883949.svg") format("svg");
     font-weight: 400;
     font-style: normal
 }
@@ -107,12 +107,12 @@ h1.post-not-found {
 }
 
 .h3, h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 h2, h3, h4, h5, h6 {
     padding-top: 12px;
-    margin-bottom: 4px
+    margin-bottom: 6px
 }
 
 dl, ol, ul {
@@ -349,7 +349,11 @@ article.post img {
     border-radius: 2px;
     max-width: 100%;
     height: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem
+}
+
+article.post li {
+  padding-bottom: 6px
 }
 
 img.mac-scr {
@@ -699,7 +703,7 @@ input#id_allow_comments {
 
 ol.square-list {
     padding-top: 4px;
-    line-height: 1.6;
+    line-height: 28px;
     list-style-type: square;
     margin-bottom: 0
 }
@@ -718,6 +722,10 @@ ol.square-list {
     font-size: 16px;
     line-height: 1.4;
     max-width: 840px
+}
+
+.grecaptcha-badge {
+    display: none !important;
 }
 
 @media (max-width: 1136px) {
