@@ -45,27 +45,47 @@
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
-input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+input[type=text]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
 
-:active, :hover, :focus {
+:active, :hover {
     outline: 0;
     outline-offset: 0;
 }
 
+a:focus {
+    outline: -webkit-focus-ring-color auto 1px;
+}
+
+input.search-action:focus {
+    outline: 0;
+}
+
 .figure-caption {
-    font-size: 94% ;
-    margin-top: -1.7rem ;
+    font-size: 94%;
+    margin-top: -1.7rem;
 }
 
 .table {
-    max-width: 840px ;
-    margin-top: 1.4rem ;
-    margin-bottom: 1.4rem ;
+    max-width: 840px;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
 }
 
 body {
@@ -158,16 +178,17 @@ a, .link {
     text-decoration: none !important;
 }
 
-a:hover, .link:hover {
+a:hover, .link:hover, .blog-links a:focus {
     background-color: rgba(71, 124, 188, 0.1);
     border-radius: 2px;
-    border-color: var(--linkColor)
+    border-color: var(--linkColor);
+    outline: 0;
 }
 
 .container {
     min-width: 320px;
     max-width: 1600px;
-    padding-top: 1.5rem ;
+    padding-top: 1.5rem;
     margin: auto auto auto 4rem
 }
 
@@ -236,7 +257,6 @@ nav {
     margin-right: 0
 }
 
-
 span.links-dots {
     font-family: i8mono, "Consolas", "Menlo", "Courier New", monospace
 }
@@ -281,19 +301,17 @@ span.links-dots {
 }
 
 button.action-search-btn {
-    display: flex;
-    width: 60px;
-    height: 100%;
-    position: relative;
     float: right;
-    justify-content: center;
     margin-top: 12px;
-    align-items: center;
     background: transparent;
     border: 0;
     cursor: pointer;
     outline: 0;
     outline-offset: 0;
+}
+
+button.action-search-btn:focus {
+    outline: -webkit-focus-ring-color auto 1px;
 }
 
 h1.list-title {
@@ -338,11 +356,11 @@ article.post p {
 }
 
 article.post p:last-of-type {
-    margin-bottom: 0 
+    margin-bottom: 0
 }
 
 article.post p:last-of-type {
-    margin-bottom: 0 
+    margin-bottom: 0
 }
 
 article.post img {
@@ -353,7 +371,7 @@ article.post img {
 }
 
 article.post li {
-  padding-bottom: 6px
+    padding-bottom: 6px
 }
 
 img.mac-scr {
@@ -510,7 +528,7 @@ span.discussion-meta {
 }
 
 .pagination {
-    font-size: 14px ;
+    font-size: 14px;
     margin-left: 5rem
 }
 
@@ -717,7 +735,7 @@ ol.square-list {
 }
 
 .hljs {
-    background: transparent ;
+    background: transparent;
     border-radius: 4px;
     font-size: 16px;
     line-height: 1.4;
@@ -733,7 +751,7 @@ ol.square-list {
         padding: 3rem 0 0 0
     }
 
-    h1.list-title{
+    h1.list-title {
         padding: 3.6rem 0 1rem 0;
         line-height: 86px
     }
@@ -753,7 +771,6 @@ ol.square-list {
     .pagination {
         margin-left: 0
     }
-
 }
 
 @media (max-width: 991px) {
@@ -781,7 +798,7 @@ ol.square-list {
         padding-left: 0
     }
 
-    h1.list-title{
+    h1.list-title {
         font-size: 82px;
         line-height: 78px;
         padding: 3.6rem 0 1rem 0
@@ -803,7 +820,7 @@ ol.square-list {
         opacity: 1
     }
 
-    .search:focus-within{
+    .search:focus-within {
         opacity: 1
     }
 
@@ -946,7 +963,6 @@ ol.square-list {
     }
 }
 
-
 @media (max-width: 425px) {
     article.post {
         padding: 1.6rem 0 0 0
@@ -1020,7 +1036,7 @@ ol.square-list {
     }
 
     .discussion-item.marked-comment, .reply-item.marked-comment {
-       padding-right: 1rem
+        padding-right: 1rem
     }
 
     .pagination-shortcut {
