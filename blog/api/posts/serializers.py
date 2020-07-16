@@ -51,12 +51,11 @@ class PostDetailSerializer(ModelSerializer):
 
     def get_comments(self, obj):
         comments_qs = obj.get_comments_without_replies()
-        comments = CommentsListSerializer(
+        return CommentsListSerializer(
             comments_qs,
             context=self.context,
             many=True
         ).data
-        return comments
 
     @staticmethod
     def get_comments_count(obj):

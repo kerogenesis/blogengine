@@ -47,13 +47,12 @@ class IndexPage(View):
         else:
             next_page_url = ''
 
-        pagintator_context = {
+        return {
             'page_object': page,
             'is_paginated': is_paginated,
             'next_page_url': next_page_url,
             'prev_page_url': prev_page_url
         }
-        return pagintator_context
 
 
 class PostDetail(View):
@@ -127,10 +126,7 @@ class CommentCreate(View):
 class CommentMark(LoginRequiredMixin, View):
     def get(self, request, slug, id):
         comment_for_mark = Comment.objects.get(id=id)
-        if not comment_for_mark.mark:
-            comment_for_mark.mark = True
-        else:
-            comment_for_mark.mark = False
+        comment_for_mark.mark = True if not comment_for_mark.mark else False
         comment_for_mark.save()
         if comment_for_mark.parent_id is not None:
             return redirect(

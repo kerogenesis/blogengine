@@ -110,9 +110,7 @@ class Comment(models.Model):
 
     @property
     def is_parent(self):
-        if self.parent is not None:
-            return False
-        return True
+        return self.parent is None
 
     @staticmethod
     def current_year():
